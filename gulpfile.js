@@ -12,8 +12,7 @@ var notify = require('gulp-notify');
 var sendmail = require('gulp-mailgun');
 del = require('del');
 
-// Default Task
-gulp.task('default', ['clean', 'fileinclude', 'images', 'browser-sync', 'sendmail', 'watch']);
+
 
 // Tasks
 // Include partial files into email template
@@ -38,8 +37,8 @@ gulp.task('fileinclude', function() {
 
   // move file to folder
   .pipe(gulp.dest('dist/'))
-
-  // notify to say the task has completed
+    
+  // notify to say the task has complete
   .pipe(notify({
     message: 'Template file includes complete'
   }))
@@ -55,7 +54,7 @@ gulp.task('images', function() {
   })))
   .pipe(gulp.dest('dist/img/'))
 
-  // notify to say the task has completed
+  // notify to say the task has complete
   .pipe(notify({
     message: 'Images task complete'
   }))
@@ -87,7 +86,7 @@ gulp.task('sendmail', function () {
     subject: 'Outline Mail - Test email' // Enter email subject line
   }))
 
-  // notify to say the task has completed
+  // notify to say the task has complete
   .pipe(notify({
     message: 'Send email is task complete'
   }))
@@ -106,3 +105,7 @@ gulp.task('watch', function() {
   gulp.watch(['*.tpl.html'], ['reload']);
   gulp.watch('templates/img/*' , ['images']);
 });
+
+
+// Default Task
+gulp.task('default', ['clean', 'fileinclude', 'images', 'browser-sync', 'watch']);
