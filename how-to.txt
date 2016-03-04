@@ -1,0 +1,10 @@
+install npm
+npm install --save-dev
+
+that will install all dependancies
+
+then type
+
+gulp
+
+this will create index.html with includes you setup in templates file
