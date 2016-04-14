@@ -10,7 +10,7 @@ var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var notify = require('gulp-notify');
 var sendmail = require('gulp-mailgun');
-del = require('del');
+var del = require('del');
 
 
 
@@ -22,6 +22,7 @@ gulp.task('fileinclude', function() {
 
   // include partials
   .pipe(fileinclude({
+    prefix: '@@',
     basepath: 'templates/components/'
   }))
 
@@ -77,20 +78,20 @@ gulp.task('browser-sync', function() {
 
 // Send test emails
 // https://www.npmjs.com/package/gulp-mailgun
-gulp.task('sendmail', function () {
-  gulp.src( 'dist/*.html') // Modify this to select the HTML file(s)
-  .pipe(sendmail({
-    key: 'Enter your Mailgun API key here', // Enter your Mailgun API key here
-    sender: 'from@test.com', // Enter sender email address
-    recipient: 'to@test.com', // Enter recipient email address
-    subject: 'Outline Mail - Test email' // Enter email subject line
-  }))
+// gulp.task('sendmail', function () {
+  // gulp.src( 'dist/*.html') // Modify this to select the HTML file(s)
+  // .pipe(sendmail({
+    // key: 'Enter your Mailgun API key here', // Enter your Mailgun API key here
+    // sender: 'from@test.com', // Enter sender email address
+    // recipient: 'to@test.com', // Enter recipient email address
+    // subject: 'Outline Mail - Test email' // Enter email subject line
+  // }))
 
   // notify to say the task has complete
-  .pipe(notify({
-    message: 'Send email is task complete'
-  }))
-});
+  // .pipe(notify({
+    // message: 'Send email is task complete'
+  // }))
+// });
 
 // Clean 'dist'
 gulp.task('clean', function() {
